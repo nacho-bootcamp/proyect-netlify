@@ -1,4 +1,5 @@
 node_modules/
 dist/
 data/
+.env
 //winstons se sabe quien hizo un put, get, etc.,
