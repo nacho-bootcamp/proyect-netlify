@@ -6,15 +6,18 @@ import * as expressWinston from 'express-winston';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-import {CommonRoutesConfig} from './common/common.routes.config';
-import {UsersRoutes} from './users/users.routes.config';
-
-
 
 const dotenvResult = dotenv.config();
 if (dotenvResult.error) {
     throw dotenvResult.error;
 }
+
+import { AuthRoutes } from './auth/auth.routes.config';
+import {CommonRoutesConfig} from './common/common.routes.config';
+import {UsersRoutes} from './users/users.routes.config';
+
+
+
 
 
 
@@ -51,6 +54,7 @@ app.use(expressWinston.logger(loggerOptions));
 // here we are adding the UserRoutes to our array,
 // after sending the Express.js application object to have the routes added to our app!
 routes.push(new UsersRoutes(app));
+routes.push(new AuthRoutes(app));
 
 // this is a simple route to make sure everything is working properly
 const runningMessage = `Server running at http://localhost:${port}`;
